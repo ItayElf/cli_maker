@@ -1,4 +1,3 @@
-from sys import flags
 from cli_maker.cli import Cli
 
 cli = Cli()
