@@ -5,9 +5,9 @@ class CliFunction(object):
         self.name = func.__name__
 
         if arguments == None:
-            self.arguments = set()
+            self.arguments = {}
         else:
-            self.arguments = set(arguments)
+            self.arguments = dict(arguments)
 
         if flags == None:
             self.flags = set()
@@ -18,6 +18,8 @@ class CliFunction(object):
         for k in arguments.keys():
             if k not in self.arguments:
                 raise Exception(f"Illegal argument: {k}")
+            else:
+                arguments[k] = self.arguments[k](arguments[k])
         for k in flags.keys():
             if k not in self.flags:
                 raise Exception(f"Illegal flag: {k}")
