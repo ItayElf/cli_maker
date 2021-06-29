@@ -26,6 +26,9 @@ class CliFunction(object):
         
         return self.func(*regular, **arguments, **flags)
 
+    def __eq__(self, o) -> bool:
+        return self.name == o.name and self.arguments == o.arguments and self.flags == o.flags and self.func == o.func
+
     def __repr__(self) -> str:
         return f"CliFunction({self.name=}, {self.arguments=}, {self.flags=}"
     

@@ -9,11 +9,11 @@ def parse_line(argv):
         return argv[0], regular, arguments, flags
 
     i = 1
-    while not argv[i].startswith("-"):
+    while i <= len(argv)-1 and not argv[i].startswith("-"):
         regular.append(argv[i])
         i += 1
     
-    while i < len(argv)-1 and not argv[i].startswith("--"):
+    while i <= len(argv)-1 and not argv[i].startswith("--"):
         try:
             arguments[argv[i][1:]] = argv[i+1]
             i += 2
